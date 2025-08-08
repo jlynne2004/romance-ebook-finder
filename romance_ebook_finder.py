@@ -197,9 +197,14 @@ class RomanceBlogGenerator:
     def search_bookbub(self, max_entries=20):
         """Search BookBub for free romance books with enhanced subgenre detection"""
         logger.info("Searching BookBub...")
+
         try:
             url = "https://www.bookbub.com/ebook-deals/free-ebooks/romance"
             response = self.session.get(url)
+            # Save HTML snapshot for debugging
+            with open("debug_bookbub.html", "wb") as f:
+                f.write(response.content)
+            logger.info("Saved BookBub HTML snapshot to debug_bookbub.html")
             soup = BeautifulSoup(response.content, 'html.parser')
 
             # Parse category-store-data div for subgenre/category mapping
@@ -335,9 +340,14 @@ class RomanceBlogGenerator:
     def search_freebooksy(self, max_entries=20):
         """Search Freebooksy for romance deals with subgenre detection"""
         logger.info("Searching Freebooksy...")
+
         try:
             url = "https://freebooksy.com/free-romance-books/"
             response = self.session.get(url)
+            # Save HTML snapshot for debugging
+            with open("debug_freebooksy.html", "wb") as f:
+                f.write(response.content)
+            logger.info("Saved Freebooksy HTML snapshot to debug_freebooksy.html")
             soup = BeautifulSoup(response.content, 'html.parser')
 
             # Try main deals page logic (h2.entry-title > a)
@@ -532,9 +542,14 @@ class RomanceBlogGenerator:
     def search_bargain_booksy(self, max_entries=20):
         """Search BargainBooksy for free romance books with enhanced parsing (only includes explicit free books)"""
         logger.info("Searching BargainBooksy...")
+
         try:
             url = "https://bargainbooksy.com/free-romance-ebooks/"
             response = self.session.get(url)
+            # Save HTML snapshot for debugging
+            with open("debug_bargainbooksy.html", "wb") as f:
+                f.write(response.content)
+            logger.info("Saved BargainBooksy HTML snapshot to debug_bargainbooksy.html")
             soup = BeautifulSoup(response.content, 'html.parser')
             
             # Parse book listings
