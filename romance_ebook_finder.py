@@ -201,6 +201,8 @@ class RomanceBlogGenerator:
         try:
             url = "https://www.bookbub.com/ebook-deals/free-ebooks/romance"
             response = self.session.get(url)
+            logger.info(f"BookBub HTTP status: {response.status_code}")
+            logger.info(f"BookBub response headers: {response.headers}")
             # Save HTML snapshot for debugging
             with open("debug_bookbub.html", "wb") as f:
                 f.write(response.content)
@@ -344,6 +346,8 @@ class RomanceBlogGenerator:
         try:
             url = "https://freebooksy.com/free-romance-books/"
             response = self.session.get(url)
+            logger.info(f"Freebooksy HTTP status: {response.status_code}")
+            logger.info(f"Freebooksy response headers: {response.headers}")
             # Save HTML snapshot for debugging
             with open("debug_freebooksy.html", "wb") as f:
                 f.write(response.content)
@@ -546,6 +550,8 @@ class RomanceBlogGenerator:
         try:
             url = "https://bargainbooksy.com/free-romance-ebooks/"
             response = self.session.get(url)
+            logger.info(f"BargainBooksy HTTP status: {response.status_code}")
+            logger.info(f"BargainBooksy response headers: {response.headers}")
             # Save HTML snapshot for debugging
             with open("debug_bargainbooksy.html", "wb") as f:
                 f.write(response.content)
